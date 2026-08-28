@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hana Boudaouine — Portfolio Design d'Expérience & Contenu</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            plum: '#4A154B',
+                            darkplum: '#2A082C',
+                            terracotta: '#E27D60',
+                            softcream: '#FDFBF7',
+                            cardbg: '#FFFFFF',
+                            border: '#EFE6DD'
+                        }
+                    },
+                    fontFamily: {
+                        title: ['Playfair Display', 'serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(-6px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 0.3s ease-out forwards'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFBF7; color: #2A082C; }
+        .gallery-item { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .gallery-item.hidden-item { display: none; }
+        .bg-grid-pattern {
+            background-image: radial-gradient(#E27D60 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+            opacity: 0.12;
+        }
+        .expandable-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.35s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+        .expandable-content > div { overflow: hidden; }
+        .expandable-card[data-expanded="true"] .expandable-content {
+            grid-template-rows: 1fr;
+            opacity: 1;
+            margin-top: 1.5rem;
+        }
+    </style>
+    
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-terracotta selection:text-white relative overflow-x-hidden">
+
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-terracotta/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute top-80 right-10 w-80 h-80 bg-brand-plum/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute top-[1200px] left-[-100px] w-[500px] h-[500px] bg-brand-terracotta/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+    <header class="border-b border-brand-border bg-white/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full border-2 border-brand-plum p-0.5 bg-white shadow-sm overflow-hidden">
+                <img src="photo-cv.png" alt="Hana Boudaouine" onerror="this.src='https://placehold.co/100x100/4A154B/FFFFFF?text=HB'" class="w-full h-full object-cover rounded-full">
+            </div>
+            <div>
+                <h1 class="font-title text-base font-bold text-brand-plum tracking-tight">Hana Boudaouine</h1>
+                <p class="text-[10px] text-brand-terracotta font-bold uppercase tracking-wider">Master 2 Ingémédia · Design d'expérience & Contenu</p>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex gap-7 text-xs font-semibold text-slate-600">
+            <a href="#projects" class="hover:text-brand-terracotta transition">Projets clés</a>
+            <a href="#skills" class="hover:text-brand-terracotta transition">Compétences</a>
+            <a href="#gallery" class="hover:text-brand-terracotta transition">Réalisations</a>
+            <a href="#fedet" class="hover:text-brand-terracotta transition">Engagement associatif</a>
+            <a href="#education" class="hover:text-brand-terracotta transition">Parcours & Outils</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+            <a href="mailto:hana.boudaouine@gmail.com" class="px-4 py-2 text-xs font-bold text-white bg-brand-terracotta rounded-full hover:bg-brand-terracotta/90 transition shadow-sm hover:scale-105 transform">
+                <i class="fa-solid fa-envelope mr-1"></i> Contact
+            </a>
+            <a href="CV 2026_.pdf" target="_blank" class="px-3.5 py-2 text-xs font-bold text-brand-plum border-2 border-brand-plum rounded-full hover:bg-brand-plum hover:text-white transition">
+                <i class="fa-solid fa-file-pdf mr-1"></i> CV
+            </a>
+        </div>
+    </header>
+
+    <main class="space-y-12">
+
+        <section id="hero" class="relative max-w-6xl mx-auto px-6 py-12 md:py-16 text-center md:text-left grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+            <div class="absolute inset-0 bg-grid-pattern -z-10 rounded-3xl"></div>
+
+            <div class="md:col-span-8 space-y-6">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-brand-terracotta/20 text-brand-plum text-[11px] font-bold rounded-full tracking-wider border border-brand-terracotta/30">
+                    <span class="w-2 h-2 rounded-full bg-brand-plum animate-pulse"></span>
+                    Recherche Alternance M2 DEDI (2025-2026) · Var, Alpes-Maritimes & Distanciel
+                </span>
+                
+                <h2 class="font-title text-3xl md:text-5xl font-bold text-brand-plum leading-tight">
+                    Concevoir des interfaces claires et des contenus utiles.
+                </h2>
+                <p class="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl">
+                    Je combine <strong>recherche utilisateur</strong>, <strong>architecture de l’information</strong> et <strong>UX Writing</strong> pour créer des parcours simples à naviguer et des contenus adaptés aux besoins des usagers.
+                </p>
+                <p class="text-xs text-slate-500 leading-relaxed max-w-2xl">
+                    Étudiante en Master 2 Ingémédia, mon parcours s'appuie sur une formation technique en MMI, de la gestion de projet en équipe et un engagement associatif responsabilisant.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2 justify-center md:justify-start">
+                    <a href="#projects" class="px-6 py-3.5 text-xs font-bold text-white bg-brand-plum rounded-full hover:bg-brand-darkplum transition shadow-lg hover:shadow-brand-plum/20">
+                        Voir mes projets <i class="fa-solid fa-arrow-down ml-2"></i>
+                    </a>
+                    <a href="CV 2026_.pdf" target="_blank" class="px-6 py-3.5 text-xs font-bold text-brand-terracotta border-2 border-brand-terracotta rounded-full hover:bg-brand-terracotta hover:text-white transition">
+                        <i class="fa-solid fa-file-pdf mr-2"></i> Télécharger mon CV (PDF)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-4 flex flex-col items-center gap-4">
+                <div class="relative w-48 h-48 md:w-60 md:h-60">
+                    <div class="absolute -inset-2 rounded-[3rem] bg-gradient-to-tr from-brand-terracotta to-brand-plum opacity-30 blur-sm"></div>
+                    <div class="relative w-full h-full rounded-[2.5rem] border-4 border-white shadow-xl bg-slate-100 overflow-hidden flex items-center justify-center text-slate-400 ring-1 ring-brand-border">
+                        <img src="photo-cv.png" alt="Portrait Hana Boudaouine" onerror="this.src='https://placehold.co/400x400/4A154B/FFFFFF?text=Photo+Portrait'" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="w-full h-16 rounded-2xl border border-dashed border-brand-terracotta/40 bg-white/80 backdrop-blur-sm flex items-center justify-center text-center p-2 text-[10px] text-brand-plum font-medium shadow-sm">
+                    ✨ Projets UX/UI & Contenus numériques
+                </div>
+            </div>
+        </section>
+
+        <!-- 👇 ENCARTS DE PRESENTATION AVEC LIGNE ANIMÉE SLIDING 👇 -->
+        <section class="max-w-6xl mx-auto px-6">
+            <div id="option-a-container" class="relative grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                <!-- Ligne orange volante -->
+                <div id="sliding-indicator" class="hidden md:block absolute top-0 left-0 w-1 bg-brand-terracotta rounded-full transition-all duration-300 ease-out pointer-events-none z-10 opacity-0" style="height: 0px; transform: translate(0px, 0px);"></div>
+
+                <!-- Encart 1 : Recherche -->
+                <div class="option-a-card bg-brand-softcream border border-brand-border rounded-2xl p-5 space-y-2 shadow-sm relative transition-all duration-200 hover:shadow-md cursor-pointer">
+                    <div class="flex items-center gap-2">
+                        <span class="flex h-2.5 w-2.5 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-terracotta opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-terracotta"></span>
+                        </span>
+                        <span class="text-[10px] font-bold text-brand-terracotta uppercase tracking-wider">Recherche actuelle</span>
+                    </div>
+                    <h3 class="font-title text-base font-bold text-brand-plum">Alternance · M2 DEDI</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        À la recherche d'une alternance en communication, marketing digital ou événementiel. Mon objectif : lier stratégie digitale et actions de terrain dans des secteurs vivants (culture, festival, hôtellerie, art de vivre).
+                    </p>
+                </div>
+
+                <!-- Encart 2 : Domaines d'activité -->
+                <div class="option-a-card bg-white border border-brand-border rounded-2xl p-5 space-y-2 shadow-sm relative transition-all duration-200 hover:shadow-md cursor-pointer">
+                    <span class="text-[10px] font-bold text-brand-terracotta uppercase tracking-wider block">Domaines d'intervention</span>
+                    <h3 class="font-title text-base font-bold text-brand-plum">Compétences & Polyvalence</h3>
+                    <ul class="text-xs text-slate-600 space-y-1">
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-brand-terracotta"></i> Communication digitale & création de contenu</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-brand-terracotta"></i> Organisation événementielle & présence terrain</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-brand-terracotta"></i> Design d'expérience (UX/UI) & identité visuelle</li>
+                    </ul>
+                </div>
+
+                <!-- Encart 3 : Mon approche -->
+                <div class="option-a-card bg-white border border-brand-border rounded-2xl p-5 space-y-2 shadow-sm relative transition-all duration-200 hover:shadow-md cursor-pointer">
+                    <span class="text-[10px] font-bold text-brand-terracotta uppercase tracking-wider block">Mon approche</span>
+                    <h3 class="font-title text-base font-bold text-brand-plum">Ma vision</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Utiliser le digital comme un levier pour enrichir des expériences réelles, de la première interaction en ligne jusqu'au jour J sur le terrain.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+        <!-- 👆 FIN DES ENCARTS 👆 -->
+
+        <section id="projects" class="py-6 max-w-6xl mx-auto px-6 space-y-8">
+            <div class="space-y-2">
+                <span class="text-[10px] font-bold text-brand-terracotta uppercase tracking-widest bg-brand-terracotta/10 px-3 py-1 rounded-full">Études de cas</span>
+                <h2 class="font-title text-2xl md:text-3xl font-bold text-brand-plum mt-2">Mes projets principaux</h2>
+                <p class="text-xs text-slate-500">Une sélection de travaux récents (SGP, RayMe, Sushi Mims).</p>
+            </div>
+
+            <div class="space-y-6">
+
+                <article id="project-sgp" class="expandable-card border-l-4 border-l-brand-terracotta border-t border-r border-b border-brand-border rounded-r-3xl rounded-l-md p-6 md:p-8 bg-brand-softcream shadow-sm" data-expanded="false">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="space-y-2">
+                            <span class="px-3 py-1 bg-brand-terracotta/15 text-brand-terracotta text-[10px] font-bold rounded-md uppercase inline-block">Stage BUT 3 MMI · Société Grassoise de Parfumerie</span>
+                            <h3 class="font-title text-xl md:text-2xl font-bold text-brand-plum">Stratégie Multi-Marque & Création de Contenu (LPG & SMG)</h3>
+                            <p class="text-xs text-slate-600 max-w-3xl">Affirmer deux identités distinctes sur un même marché et optimiser la visibilité en ligne.</p>
+                        </div>
+                        <button onclick="toggleExpand('project-sgp')" class="toggle-btn inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-brand-plum bg-white rounded-full border border-brand-border hover:bg-brand-plum hover:text-white transition shrink-0 shadow-sm">
+                            <span>Voir plus</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300"></i>
+                        </button>
+                    </div>
+
+                    <div class="expandable-content">
+                        <div class="space-y-8 pt-4 border-t border-brand-border/60">
+                            <div class="text-xs text-slate-500">
+                                <p><strong>Rôle :</strong> Stagiaire en Communication & Webmarketing</p>
+                                <p><strong>Livrables :</strong> Rédaction web SEO, création de contenus visuels, animation des réseaux sociaux, e-mailing</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                                <div class="lg:col-span-5 aspect-video rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-inner">
+                                    <img src="media/sgp-mockup-analytics.jpg" 
+                                        alt="Visuels SGP" 
+                                        onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=Aper%C3%A7u+SGP'"
+                                        onclick="openModal(this.src)"
+                                        title="Cliquer pour agrandir"
+                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-pointer">
+                                </div>
+
+                                <div class="lg:col-span-7 space-y-4 text-xs">
+                                    <div class="bg-white p-4 rounded-2xl border border-brand-border space-y-1.5 shadow-sm">
+                                        <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5"><i class="fa-regular fa-compass text-sm"></i> ENJEU & POSITIONNEMENT</span>
+                                        <p class="text-slate-600 leading-relaxed">
+                                            Valoriser la différence entre <strong>Le Petit Grassois</strong> (artisanal, haut de gamme, épuré) et <strong>Smellingood</strong> (accessible, dynamique, coloré). Déclinaison de chartes visuelles et de ton de voix adaptés à chaque cible.
+                                        </p>
+                                    </div>
+
+                                    <div class="bg-white p-4 rounded-2xl border border-brand-border space-y-1.5 shadow-sm">
+                                        <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5"><i class="fa-regular fa-pen-to-square text-sm"></i> RÉDACTION & SEO</span>
+                                        <p class="text-slate-600 leading-relaxed">
+                                            Production d'articles de blog et réécriture de fiches produits optimisées pour le référencement naturel afin d'améliorer la visibilité sur les moteurs de recherche.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <div class="bg-white p-3.5 rounded-2xl border border-brand-border shadow-sm border-t-2 border-t-brand-terracotta">
+                                    <span class="font-bold text-xl text-brand-terracotta block">+239K</span>
+                                    <span class="text-[10px] text-slate-500 uppercase font-bold">Impressions globales</span>
+                                </div>
+                                <div class="bg-white p-3.5 rounded-2xl border border-brand-border shadow-sm border-t-2 border-t-brand-plum">
+                                    <span class="font-bold text-xl text-brand-plum block">10 000</span>
+                                    <span class="text-[10px] text-slate-500 uppercase font-bold">Abonnés Instagram</span>
+                                </div>
+                                <div class="bg-white p-3.5 rounded-2xl border border-brand-border shadow-sm border-t-2 border-t-brand-terracotta">
+                                    <span class="font-bold text-xl text-brand-terracotta block">+1 000</span>
+                                    <span class="text-[10px] text-slate-500 uppercase font-bold">Abonnés TikTok (SMG)</span>
+                                </div>
+                                <div class="bg-white p-3.5 rounded-2xl border border-brand-border shadow-sm border-t-2 border-t-brand-plum">
+                                    <span class="font-bold text-xl text-brand-plum block">100%</span>
+                                    <span class="text-[10px] text-slate-500 uppercase font-bold">Nouveau concept Pinterest</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                                <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-2 shadow-sm">
+                                    <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5"><i class="fa-solid fa-camera text-sm"></i> CRÉATION VISUELLE & PHOTOGRAPHIE</span>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Réalisation de prises de vue produits : univers minéral pour LPG, compositions colorées pour SMG. Retouches, détourages et intégrations visuelles pour le site et les réseaux.
+                                    </p>
+                                </div>
+
+                                <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-2 shadow-sm">
+                                    <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5"><i class="fa-solid fa-share-nodes text-sm"></i> ANIMATION DES RÉSEAUX SOCIAUX</span>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Création de contenus pour TikTok, Instagram et Pinterest. Proposition d'un format visuel sur Pinterest et préparation de séquences d'e-mails sous Mailchimp.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-3 shadow-sm text-xs">
+                                <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5 tracking-wider"><i class="fa-solid fa-award text-sm"></i> COMPÉTENCES MOBILISÉES</span>
+                                <div class="flex flex-wrap gap-2 pt-1">
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">Rédaction web & SEO</span>
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">Création de contenus visuels</span>
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">Social Media</span>
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">E-mailing</span>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed pt-1 border-t border-brand-border/60">
+                                    <strong>En pratique :</strong> Application concrète des techniques de communication web, de la rédaction au suivi de statistiques basiques.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="project-rayme" class="expandable-card border-l-4 border-l-brand-plum border-t border-r border-b border-brand-border rounded-r-3xl rounded-l-md p-6 md:p-8 bg-brand-softcream shadow-sm" data-expanded="false">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="space-y-2">
+                            <span class="px-3 py-1 bg-brand-plum/10 text-brand-plum text-[10px] font-bold rounded-md uppercase inline-block">Projet d'études M1 Ingémédia · Projet d'équipe</span>
+                            <h3 class="font-title text-xl md:text-2xl font-bold text-brand-plum">RayMe — Borne et application d'essayage 3D</h3>
+                            <p class="text-xs text-slate-600 max-w-3xl">Concevoir une expérience d'essayage virtuel simple à utiliser en magasin et sur mobile.</p>
+                        </div>
+                        <button onclick="toggleExpand('project-rayme')" class="toggle-btn inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-brand-plum bg-white rounded-full border border-brand-border hover:bg-brand-plum hover:text-white transition shrink-0 shadow-sm">
+                            <span>Voir plus</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300"></i>
+                        </button>
+                    </div>
+
+                    <div class="expandable-content">
+                        <div class="space-y-8 pt-4 border-t border-brand-border/60">
+                            <div class="text-xs text-slate-500">
+                                <p><strong>Mon rôle :</strong> Contribution UX Research & Design d'interface</p>
+                                <p><strong>Cadre :</strong> Projet universitaire en groupe</p>
+                                <p><strong>Supports :</strong> Borne interactive, application mobile & web</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                                <div class="lg:col-span-5 aspect-video rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-inner flex items-center justify-center">
+                                    <img src="media/rayme-preview.jpg" 
+                                        alt="Visuels RayMe" 
+                                        onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=Aper%C3%A7u+RayMe'"
+                                        onclick="openModal(this.src)"
+                                        title="Cliquer pour agrandir"
+                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-pointer">
+                                </div>
+
+                                <div class="lg:col-span-7 space-y-4 text-xs">
+                                    <div class="bg-white p-4 rounded-2xl border border-brand-border space-y-1.5 shadow-sm">
+                                        <span class="font-bold text-brand-plum uppercase text-[10px] flex items-center gap-1.5"><i class="fa-regular fa-lightbulb text-sm"></i> L'OBJECTIF DU PROJET</span>
+                                        <p class="text-slate-600 leading-relaxed">
+                                            Créer une expérience fluide : l'utilisateur teste un vêtement sur la borne en magasin, puis retrouve sa silhouette et ses coups de cœur directement sur son téléphone.
+                                        </p>
+                                    </div>
+
+                                    <div class="bg-white p-4 rounded-2xl border border-brand-border space-y-1.5 shadow-sm">
+                                        <span class="font-bold text-brand-plum uppercase text-[10px] flex items-center gap-1.5"><i class="fa-solid fa-route text-sm"></i> PARCOURS UTILISATEUR & NAVIGATION</span>
+                                        <p class="text-slate-600 leading-relaxed">
+                                            Schématisation des étapes de navigation (User Flows) et organisation des menus sur les différents supports pour limiter les clics en magasin.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                                <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-2 shadow-sm">
+                                    <span class="font-bold text-brand-plum uppercase text-[10px] flex items-center gap-1.5"><i class="fa-solid fa-magnifying-glass text-sm"></i> RECHERCHE UTILISATEUR</span>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Entretiens et questionnaires auprès d'usagers, élaboration de personas pour aligner les choix de design sur des besoins identifiés.
+                                    </p>
+                                </div>
+
+                                <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-2 shadow-sm">
+                                    <span class="font-bold text-brand-plum uppercase text-[10px] flex items-center gap-1.5"><i class="fa-solid fa-people-group text-sm"></i> TRAVAIL EN ÉQUIPE</span>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Projet mené en groupe avec suivi par jalons, répartition des tâches de maquettage et retours réguliers.
+                                    </p>
+                                </div>
+
+                                <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-2 shadow-sm">
+                                    <span class="font-bold text-brand-plum uppercase text-[10px] flex items-center gap-1.5"><i class="fa-regular fa-file-lines text-sm"></i> SPÉCIFICATIONS & RGPD</span>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Rédaction des parcours d'erreur et intégration des règles de confidentialité (RGPD) liées aux données personnelles.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-3 shadow-sm text-xs">
+                                <span class="font-bold text-brand-plum uppercase text-[10px] flex items-center gap-1.5 tracking-wider"><i class="fa-solid fa-award text-sm"></i> COMPÉTENCES MOBILISÉES</span>
+                                <div class="flex flex-wrap gap-2 pt-1">
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">UX Research & Personas</span>
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">Architecture de l'information</span>
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">User Flows & Wireframing</span>
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">Sensibilisation RGPD</span>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed pt-1 border-t border-brand-border/60">
+                                    <strong>En pratique :</strong> Mise en application des méthodes de conception centrée utilisateur dans un cadre académique multi-interfaces.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="project-sushi" class="expandable-card border-l-4 border-l-brand-terracotta border-t border-r border-b border-brand-border rounded-r-3xl rounded-l-md p-6 md:p-8 bg-brand-softcream shadow-sm" data-expanded="false">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="space-y-2">
+                            <span class="px-3 py-1 bg-brand-terracotta/15 text-brand-terracotta text-[10px] font-bold rounded-md uppercase inline-block">Projet E-commerce UX/UI · BUT MMI</span>
+                            <h3 class="font-title text-xl md:text-2xl font-bold text-brand-plum">Maquettage UX/UI — Sushi Mims (Livraison & Click & Collect)</h3>
+                            <p class="text-xs text-slate-600 max-w-3xl">Concevoir une interface claire et accessible pour la commande de sushis en ligne.</p>
+                        </div>
+                        <button onclick="toggleExpand('project-sushi')" class="toggle-btn inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-brand-plum bg-white rounded-full border border-brand-border hover:bg-brand-plum hover:text-white transition shrink-0 shadow-sm">
+                            <span>Voir plus</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300"></i>
+                        </button>
+                    </div>
+
+                    <div class="expandable-content">
+                        <div class="space-y-8 pt-4 border-t border-brand-border/60">
+                            <div class="text-xs text-slate-500">
+                                <p><strong>Rôle :</strong> Maquettage UX/UI</p>
+                                <p><strong>Livrables :</strong> Arborescence, maquettes interactives Figma, composants réutilisables & parcours de commande</p>
+                                <p><strong>Outils :</strong> Figma</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                                <div class="lg:col-span-5 aspect-video rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-inner flex items-center justify-center">
+                                    <img src="media/sushimims-preview.jpg" 
+                                        alt="Visuels Sushi Mims" 
+                                        onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=Aper%C3%A7u+Sushi+Mims'"
+                                        onclick="openModal(this.src)"
+                                        title="Cliquer pour agrandir"
+                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-pointer">
+                                </div>
+
+                                <div class="lg:col-span-7 space-y-4 text-xs">
+                                    <div class="bg-white p-4 rounded-2xl border border-brand-border space-y-1.5 shadow-sm">
+                                        <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5"><i class="fa-solid fa-magnifying-glass text-sm"></i> PARCOURS DE COMMANDE</span>
+                                        <p class="text-slate-600 leading-relaxed">
+                                            Clarification du choix initial entre livraison et Click & Collect. Structuration des étapes du panier pour faciliter la sélection des horaires et du restaurant.
+                                        </p>
+                                    </div>
+
+                                    <div class="bg-white p-4 rounded-2xl border border-brand-border space-y-1.5 shadow-sm">
+                                        <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5"><i class="fa-solid fa-utensils text-sm"></i> ORGANISATION DU CATALOGUE</span>
+                                        <p class="text-slate-600 leading-relaxed">
+                                            Organisation des catégories du menu et ajout de filtres simples (ingrédients, régimes alimentaires) pour faciliter la recherche.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                                <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-2 shadow-sm">
+                                    <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5"><i class="fa-solid fa-pen-ruler text-sm"></i> PROTOTYPAGE SUR FIGMA</span>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Création d'un prototype interactif montrant le parcours d'ajout au panier et la validation de commande.
+                                    </p>
+                                </div>
+
+                                <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-2 shadow-sm">
+                                    <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5"><i class="fa-solid fa-layer-group text-sm"></i> SYSTEME DE COMPOSANTS</span>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Création de composants Figma réutilisables (boutons, cartes produits, sélecteurs) respectant la charte visuelle définie.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-3 shadow-sm text-xs">
+                                <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5 tracking-wider"><i class="fa-solid fa-award text-sm"></i> COMPÉTENCES MOBILISÉES</span>
+                                <div class="flex flex-wrap gap-2 pt-1">
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">UX/UI E-commerce</span>
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">Parcours d'achat</span>
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">Maquettage Figma</span>
+                                    <span class="px-2.5 py-1 bg-brand-softcream border border-brand-border font-semibold text-brand-plum rounded-md">Organisation de catalogue</span>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed pt-1 border-t border-brand-border/60">
+                                    <strong>En pratique :</strong> Entraînement à la conception d'interfaces e-commerce adaptées aux usages mobiles et web.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="skills" class="py-6 max-w-6xl mx-auto px-6 space-y-8 relative">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-[10px] font-bold text-brand-terracotta uppercase tracking-widest bg-brand-terracotta/10 px-3 py-1 rounded-full">Compétences en action</span>
+                <h2 class="font-title text-3xl font-bold text-brand-plum">Aperçu de mes compétences</h2>
+                <p class="text-xs text-slate-500">Exemples de travaux réalisés durant mon parcours d'études et mes stages.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                <div class="bg-white p-6 rounded-3xl border border-brand-border shadow-sm space-y-4 hover:border-brand-plum transition duration-300 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-plum/10 text-brand-plum flex items-center justify-center text-base">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-brand-plum">Gestion de projet digital</h3>
+                        <p class="text-[10px] font-bold text-brand-terracotta uppercase tracking-wider">Notion • Trello • FigJam • Gantt</p>
+                        <p class="text-slate-600 leading-relaxed">
+                            Suivi des étapes, organisation des tâches en équipe et veilles au respect du calendrier pour la livraison des projets.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-brand-border/60 text-[11px] text-slate-500">
+                        <span class="font-bold text-brand-plum">🎯 Objectif :</span> Organisation rigoureuse et suivi des objectifs.
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl border border-brand-border shadow-sm space-y-4 hover:border-brand-plum transition duration-300 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-plum/10 text-brand-plum flex items-center justify-center text-base">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-brand-plum">UX / UI Design</h3>
+                        <p class="text-[10px] font-bold text-brand-terracotta uppercase tracking-wider">Figma • Wireframing • Personas • Prototypage</p>
+                        <p class="text-slate-600 leading-relaxed">
+                            Recherche usager, création de wireframes, prototypes interactifs et préparation de composants réutilisables sur Figma.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-brand-border/60 text-[11px] text-slate-500">
+                        <span class="font-bold text-brand-plum">🎯 Objectif :</span> Interfaces fonctionnelles et simples à utiliser.
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl border border-brand-border shadow-sm space-y-4 hover:border-brand-plum transition duration-300 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-plum/10 text-brand-plum flex items-center justify-center text-base">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-brand-plum">Création de contenu & Graphisme</h3>
+                        <p class="text-[10px] font-bold text-brand-terracotta uppercase tracking-wider">Photoshop • Illustrator • InDesign • SEO</p>
+                        <p class="text-slate-600 leading-relaxed">
+                            Rédaction web optimisée, création de supports visuels et éléments graphiques adaptés aux différents canaux.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-brand-border/60 text-[11px] text-slate-500">
+                        <span class="font-bold text-brand-plum">🎯 Objectif :</span> Contenus visuels et textuels cohérents.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="py-6 max-w-6xl mx-auto px-6 space-y-8">
+            <div class="space-y-2">
+                <span class="text-[10px] font-bold text-brand-terracotta uppercase tracking-widest bg-brand-terracotta/10 px-3 py-1 rounded-full">Projets & Réalisations</span>
+                <h2 class="font-title text-2xl md:text-3xl font-bold text-brand-plum mt-2">Galerie de travaux</h2>
+                <p class="text-xs text-slate-500">Un aperçu de mes réalisations universitaires, de stage et personnelles.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                <button onclick="filterGallery('all')" class="filter-btn px-4 py-1.5 rounded-full bg-brand-plum text-white shadow-sm transition" data-filter="all">Tous (9)</button>
+                <button onclick="filterGallery('ux-ui')" class="filter-btn px-4 py-1.5 rounded-full bg-white border border-brand-border text-slate-600 hover:border-brand-plum transition" data-filter="ux-ui">Design d'expérience & UX/UI</button>
+                <button onclick="filterGallery('content-seo')" class="filter-btn px-4 py-1.5 rounded-full bg-white border border-brand-border text-slate-600 hover:border-brand-plum transition" data-filter="content-seo">Création de contenu & SEO</button>
+                <button onclick="filterGallery('branding')" class="filter-btn px-4 py-1.5 rounded-full bg-white border border-brand-border text-slate-600 hover:border-brand-plum transition" data-filter="branding">Identité visuelle & Graphisme</button>
+                <button onclick="filterGallery('audiovisuel')" class="filter-btn px-4 py-1.5 rounded-full bg-white border border-brand-border text-slate-600 hover:border-brand-plum transition" data-filter="audiovisuel">Projets d'équipe & Vidéo</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+                
+                <!-- 1. RAYME -->
+                <div class="gallery-item ux-ui bg-white p-6 rounded-3xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="w-full aspect-[16/9] rounded-2xl border border-slate-100 bg-slate-900/5 overflow-hidden cursor-pointer flex items-center justify-center" onclick="openModal('media/rayme-preview.jpg')" title="Cliquer pour agrandir">
+                            <img src="media/rayme-preview.jpg" 
+                                alt="RayMe — Borne et application d'essayage 3D" 
+                                onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=RayMe+UX/UI'" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase text-brand-terracotta">
+                            <span>Design d'expérience & UX/UI</span>
+                            <span>UX Research · Personas</span>
+                        </div>
+
+                        <h3 class="font-bold text-sm text-brand-plum">RayMe — Borne & App d'essayage 3D</h3>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Conception du parcours utilisateur (borne interactive et mobile) pour l'essayage virtuel en magasin.
+                        </p>
+                    </div>
+
+                    <ul class="text-[11px] text-slate-500 space-y-1.5 pt-3 border-t border-brand-border/60">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Recherche & Parcours :</strong> Personas, parcours usagers et schémas de navigation.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Projet d'études :</strong> Travail en groupe, livrables par étapes et principes RGPD.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2. SUSHI MIMS -->
+                <div class="gallery-item ux-ui bg-white p-6 rounded-3xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="w-full aspect-[16/9] rounded-2xl border border-slate-100 bg-slate-900/5 overflow-hidden cursor-pointer flex items-center justify-center" onclick="openModal('media/sushimims-preview.jpg')" title="Cliquer pour agrandir">
+                            <img src="media/sushimims-preview.jpg" 
+                                alt="Sushi Mims — E-commerce & Click & Collect" 
+                                onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=Sushi+Mims+Figma'" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase text-brand-terracotta">
+                            <span>Design d'expérience & UX/UI</span>
+                            <span>Figma · UI Kit</span>
+                        </div>
+
+                        <h3 class="font-bold text-sm text-brand-plum">Sushi Mims — E-commerce & Click & Collect</h3>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Maquettage d'une interface de commande en ligne pour la livraison et le retrait sur place.
+                        </p>
+                    </div>
+
+                    <ul class="text-[11px] text-slate-500 space-y-1.5 pt-3 border-t border-brand-border/60">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Parcours d'achat :</strong> Étape de commande simplifiée et filtres d'ingrédients.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Prototypage :</strong> Composants interactifs sous Figma et aperçus des interactions.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 3. FIT AT HOME -->
+                <div class="gallery-item ux-ui bg-white p-6 rounded-3xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="w-full aspect-[16/9] rounded-2xl border border-slate-100 bg-slate-900/5 overflow-hidden cursor-pointer flex items-center justify-center" onclick="openModal('media/fitathome-preview.jpg')" title="Cliquer pour agrandir">
+                            <img src="media/fitathome-preview.jpg" 
+                                alt="Maquettes UX/UI Fit At Home" 
+                                onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=Fit+At+Home+Figma'" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase text-brand-terracotta">
+                            <span>Design d'expérience & UX/UI</span>
+                            <span>Figma · Wireframing</span>
+                        </div>
+
+                        <h3 class="font-bold text-sm text-brand-plum">Fit At Home — Application mobile de sport</h3>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Conception des maquettes de principe et de l'interface mobile pour une application de suivi d'exercices.
+                        </p>
+                    </div>
+
+                    <ul class="text-[11px] text-slate-500 space-y-1.5 pt-3 border-t border-brand-border/60">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>UX Research :</strong> Personas, wireframes fonctionnels et arborescence.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>UI Design :</strong> Maquettes visuelles sous Figma et choix de filtres d'exercices.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 4. BLENDIT -->
+                <div class="gallery-item ux-ui bg-white p-6 rounded-3xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="w-full aspect-[16/9] rounded-2xl border border-slate-100 bg-slate-900/5 overflow-hidden cursor-pointer flex items-center justify-center" onclick="openModal('media/blendit-preview.jpg')" title="Cliquer pour agrandir">
+                            <img src="media/blendit-preview.jpg" 
+                                alt="Maquettes UX/UI de l'application BlendIt" 
+                                onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=BlendIt+UX/UI'" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase text-brand-terracotta">
+                            <span>Design d'expérience & UX/UI</span>
+                            <span>Figma · Prototypage</span>
+                        </div>
+
+                        <h3 class="font-bold text-sm text-brand-plum">BlendIt — Application de montage vidéo</h3>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Projet d'interface mobile pour un outil de montage simplifié destiné aux créateurs de contenus.
+                        </p>
+                    </div>
+
+                    <ul class="text-[11px] text-slate-500 space-y-1.5 pt-3 border-t border-brand-border/60">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>UX / UI :</strong> Wireframes, parcours de bienvenue et écran d'édition épuré.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Fonctionnalités :</strong> Navigation centrée sur la rapidité d'édition et l'ergonomie.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 5. SOCIÉTÉ GRASSOISE DE PARFUMERIE -->
+                <div class="gallery-item content-seo bg-white p-6 rounded-3xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="w-full aspect-[16/9] rounded-2xl border border-slate-100 bg-slate-900/5 overflow-hidden cursor-pointer flex items-center justify-center" onclick="openModal('media/sgp-mockup-analytics.jpg')" title="Cliquer pour agrandir">
+                            <img src="media/sgp-mockup-analytics.jpg" 
+                                alt="SGP — Stratégie Multi-Marque & Contenu" 
+                                onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=SGP+SEO+%26+Contenu'" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase text-brand-terracotta">
+                            <span>Création de contenu & SEO</span>
+                            <span>Rédaction · Social Media</span>
+                        </div>
+
+                        <h3 class="font-bold text-sm text-brand-plum">SGP — Contenus de marque & Rédaction SEO</h3>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Adaptation des visuels pour deux marques, rédaction d'articles SEO et animation des comptes sociaux.
+                        </p>
+                    </div>
+
+                    <ul class="text-[11px] text-slate-500 space-y-1.5 pt-3 border-t border-brand-border/60">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Rédaction web :</strong> Rédaction d'articles optimisés par mots-clés et fiches produits.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Réseaux sociaux :</strong> Publication sur TikTok/Instagram et envoi d'infolettres.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 6. CAMPAGNE ULULE -->
+                <div class="gallery-item content-seo bg-white p-6 rounded-3xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="w-full aspect-[16/9] rounded-2xl border border-slate-100 bg-slate-900/5 overflow-hidden cursor-pointer flex items-center justify-center" onclick="openModal('media/ulule-preview.jpg')" title="Cliquer pour agrandir">
+                            <img src="media/ulule-preview.jpg" 
+                                alt="Campagne Ulule & Lancement de livre" 
+                                onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=Campagne+Ulule'" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase text-brand-terracotta">
+                            <span>Création de contenu & SEO</span>
+                            <span>Rédaction · Communication</span>
+                        </div>
+
+                        <h3 class="font-bold text-sm text-brand-plum">Campagne Crowdfunding Ulule</h3>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Support de communication et contenus visuels pour la page de financement participatif d'un livre.
+                        </p>
+                    </div>
+
+                    <ul class="text-[11px] text-slate-500 space-y-1.5 pt-3 border-t border-brand-border/60">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Présentation de page :</strong> Mise en page de la description et rédaction des contreparties.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Supports de relais :</strong> Création de visuels pour annoncer les étapes sur les réseaux sociaux.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 7. CHITCHAT HANA -->
+                <div class="gallery-item content-seo audiovisuel bg-white p-6 rounded-3xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="w-full aspect-[16/9] rounded-2xl border border-slate-100 bg-slate-900/5 overflow-hidden cursor-pointer flex items-center justify-center" onclick="openModal('media/chitchat-preview.jpg')" title="Cliquer pour agrandir">
+                            <img src="media/chitchat-preview.jpg" 
+                                alt="ChitChat Hana — Content Creation & Vidéo" 
+                                onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=ChitChat+Hana'" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase text-brand-terracotta">
+                            <span>Création de contenu & Vidéo</span>
+                            <span>Écriture · Montage Vidéo</span>
+                        </div>
+
+                        <h3 class="font-bold text-sm text-brand-plum">ChitChat Hana — Création vidéo personnelle</h3>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Production de formats vidéo courts et adaptés aux réseaux sociaux (TikTok, Instagram).
+                        </p>
+                    </div>
+
+                    <ul class="text-[11px] text-slate-500 space-y-1.5 pt-3 border-t border-brand-border/60">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Préparation :</strong> Rédaction de scripts simples et accroches pour formats courts.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Montage :</strong> Assemblage vidéo, sous-titres et habillage visuel.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 8. JAZZ LE MIDDLE ORCHESTRA -->
+                <div class="gallery-item branding bg-white p-6 rounded-3xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="w-full aspect-[16/9] rounded-2xl border border-slate-100 bg-slate-900/5 overflow-hidden cursor-pointer flex items-center justify-center" onclick="openModal('media/jazz-middle-orchestra.jpg')" title="Cliquer pour agrandir">
+                            <img src="media/jazz-middle-orchestra.jpg" 
+                                alt="Identité visuelle - Jazz Le Middle Orchestra" 
+                                onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=Jazz+Le+Middle+Orchestra'" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase text-brand-terracotta">
+                            <span>Identité visuelle & Graphisme</span>
+                            <span>Illustrator · Graphisme</span>
+                        </div>
+
+                        <h3 class="font-bold text-sm text-brand-plum">Jazz Le Middle Orchestra — Logotype & Visuels</h3>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Projet graphique : réalisation du logo et déclinaisons de visuels pour une formation musicale.
+                        </p>
+                    </div>
+
+                    <ul class="text-[11px] text-slate-500 space-y-1.5 pt-3 border-t border-brand-border/60">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Logotype :</strong> Création du logo vectoriel sous Illustrator.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Déclinaisons :</strong> Adaptation pour affiches d'événements et réseaux sociaux.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 9. KLAP'S AGENCY -->
+                <div class="gallery-item audiovisuel branding bg-white p-6 rounded-3xl border border-brand-border shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="w-full aspect-[16/9] rounded-2xl border border-slate-100 bg-slate-900/5 overflow-hidden cursor-pointer flex items-center justify-center" onclick="openModal('media/klaps-preview.jpg')" title="Cliquer pour agrandir">
+                            <img src="media/klaps-preview.jpg" 
+                                alt="KLAP'S Agency — Projet d'études audiovisuel" 
+                                onerror="this.src='https://placehold.co/600x400/4A154B/FFFFFF?text=KLAP%27S+Agency'" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase text-brand-terracotta">
+                            <span>Projets d'équipe & Vidéo</span>
+                            <span>Projet d'études · Suivi</span>
+                        </div>
+
+                        <h3 class="font-bold text-sm text-brand-plum">KLAP'S Agency — Projet étudiant audiovisuel</h3>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Mise en situation fictive d'agence vidéo réalisée durant mes études en multimédia.
+                        </p>
+                    </div>
+
+                    <ul class="text-[11px] text-slate-500 space-y-1.5 pt-3 border-t border-brand-border/60">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Organisation :</strong> Répartition des étapes de tournage et suivi du planning.</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-brand-terracotta font-bold">▪</span> 
+                            <span><strong>Habillage visuel :</strong> Création de la charte de présentation du groupe d'études.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="fedet" class="py-6 max-w-6xl mx-auto px-6 space-y-8">
+            <div class="space-y-2">
+                <span class="text-[10px] font-bold text-brand-terracotta uppercase tracking-widest bg-brand-terracotta/10 px-3 py-1 rounded-full">Engagement associatif & Vie étudiante</span>
+                <h2 class="font-title text-2xl md:text-3xl font-bold text-brand-plum mt-2">Expérience de présidence associative</h2>
+                <p class="text-xs text-slate-500">FEDET — Animation de la vie étudiante, organisation d'événements et actions de sensibilisation sur le campus toulonnais.</p>
+            </div>
+
+            <article class="border-l-4 border-l-brand-terracotta border-t border-r border-b border-brand-border rounded-r-3xl rounded-l-md p-6 md:p-8 bg-brand-softcream shadow-sm space-y-8">
+                
+                <!-- En-tête -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-brand-border/60 pb-6">
+                    <div class="space-y-2">
+                        <span class="px-3 py-1 bg-brand-terracotta text-white text-[10px] font-bold rounded-md uppercase inline-block shadow-sm">Engagement bénévolat · FEDET</span>
+                        <h3 class="font-title text-xl md:text-2xl font-bold text-brand-plum">Présidente de la Fédération des Étudiants Toulonnais</h3>
+                        <p class="text-xs text-slate-600 max-w-3xl leading-relaxed">
+                            Coordination des équipes bénévoles, organisation d'événements pour les étudiants et mise en place d'actions d'entraide et de sensibilisation sur le territoire.
+                        </p>
+                    </div>
+                    <div class="text-xs text-slate-500 bg-white/80 p-3.5 rounded-2xl border border-brand-border shrink-0 space-y-1">
+                        <p><strong>Rôle :</strong> Présidente (Bénévolat)</p>
+                        <p><strong>Interlocuteurs :</strong> Métropole TPM, Crous, Université de Toulon</p>
+                    </div>
+                </div>
+
+                <!-- Block Image 16:9 à gauche + Encarts texte à droite -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    
+                    <!-- Image 16:9 sur le côté gauche -->
+                    <div class="lg:col-span-5 w-full aspect-video rounded-2xl border border-slate-200 bg-slate-900/5 overflow-hidden cursor-pointer relative group shrink-0" onclick="openModal('media/fedet-overview.jpg')" title="Cliquer pour agrandir">
+                        <img src="media/fedet-overview.jpg" 
+                            alt="Présidence FEDET — FEDESTIVAL et actions terrain" 
+                            onerror="this.src='https://placehold.co/1200x500/4A154B/FFFFFF?text=FEDET+--+FEDESTIVAL+%26+Actions+Terrain'" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white text-xs font-semibold bg-slate-900/80 px-4 py-2 rounded-full shadow-lg">Agrandir le visuel</span>
+                        </div>
+                    </div>
+
+                    <!-- Encarts de texte à droite -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-2 shadow-sm">
+                            <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5">
+                                <i class="fa-solid fa-bullhorn text-sm"></i> Engagement & Leadership
+                            </span>
+                            <h4 class="font-bold text-brand-plum text-sm">Management & Vision Stratégique</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Direction et animation du bureau et du conseil d'administration. Gestion de projets transversaux à l'échelle du territoire et représentation auprès de l'écosystème institutionnel.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-brand-border space-y-2 shadow-sm">
+                            <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5">
+                                <i class="fa-solid fa-hand-holding-heart text-sm"></i> Impact & Proximité
+                            </span>
+                            <h4 class="font-bold text-brand-plum text-sm">Actions de Terrain & Solidarité</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Supervision des projets phares : grands événements culturels, distribution de produits de première nécessité et campagnes d'information et de santé sur les campus.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Grille des actions détaillées -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-xs">
+                    
+                    <!-- 1. FEDESTIVAL -->
+                    <div class="bg-white p-6 rounded-2xl border border-brand-border space-y-3 shadow-sm hover:border-brand-plum transition duration-300 flex flex-col justify-between">
+                        <div class="space-y-2.5">
+                            <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5">
+                                <i class="fa-solid fa-music text-sm"></i> Événementiel
+                            </span>
+                            <h4 class="font-bold text-brand-plum text-sm">Organisation du FEDESTIVAL</h4>
+                            <p class="text-slate-600 leading-relaxed">
+                                Aide à la coordination du festival étudiant toulonnais. Participation à l'organisation logistique, suivi de la planification et présence le jour J pour accompagner l'équipe bénévole.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-brand-border/40 text-[10px] text-slate-500 font-medium">
+                            <strong>Compétences :</strong> Logistique événementielle, gestion du temps, travail d'équipe.
+                        </div>
+                    </div>
+
+                    <!-- 2. WEF & Formations -->
+                    <div class="bg-white p-6 rounded-2xl border border-brand-border space-y-3 shadow-sm hover:border-brand-plum transition duration-300 flex flex-col justify-between">
+                        <div class="space-y-2.5">
+                            <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5">
+                                <i class="fa-solid fa-graduation-cap text-sm"></i> Vie associative
+                            </span>
+                            <h4 class="font-bold text-brand-plum text-sm">Week-ends d'accueil & Formations</h4>
+                            <p class="text-slate-600 leading-relaxed">
+                                Aide à la préparation des temps de rencontre et des modules d'information destinés aux nouveaux bénévoles associatifs (fonctionnement d'une association, passation).
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-brand-border/40 text-[10px] text-slate-500 font-medium">
+                            <strong>Compétences :</strong> Animation de réunion, organisation de séminaires, accueil.
+                        </div>
+                    </div>
+
+                    <!-- 3. Stands de Prévention -->
+                    <div class="bg-white p-6 rounded-2xl border border-brand-border space-y-3 shadow-sm hover:border-brand-plum transition duration-300 flex flex-col justify-between">
+                        <div class="space-y-2.5">
+                            <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5">
+                                <i class="fa-solid fa-shield-heart text-sm"></i> Sensibilisation sur campus
+                            </span>
+                            <h4 class="font-bold text-brand-plum text-sm">Stands de Prévention</h4>
+                            <p class="text-slate-600 leading-relaxed">
+                                Tenue de stands de sensibilisation sur le campus (santé, réduction des risques, écoute étudiant) en lien avec des structures et intervenants qualifiés.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-brand-border/40 text-[10px] text-slate-500 font-medium">
+                            <strong>Compétences :</strong> Écoute, contact public, logistique de stand.
+                        </div>
+                    </div>
+
+                    <!-- 4. Épicerie solidaire -->
+                    <div class="bg-white p-6 rounded-2xl border border-brand-border space-y-3 shadow-sm hover:border-brand-plum transition duration-300 flex flex-col justify-between">
+                        <div class="space-y-2.5">
+                            <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5">
+                                <i class="fa-solid fa-basket-shopping text-sm"></i> Entraide
+                            </span>
+                            <h4 class="font-bold text-brand-plum text-sm">Épicerie solidaire étudiante</h4>
+                            <p class="text-slate-600 leading-relaxed">
+                                Aide à la gestion des permanences de l'épicerie solidaire et participation aux distributions de fournitures et denrées sur les campus.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-brand-border/40 text-[10px] text-slate-500 font-medium">
+                            <strong>Compétences :</strong> Solidarité, logistique de distribution, accueil des usagers.
+                        </div>
+                    </div>
+
+                    <!-- 5. Institutionnel -->
+                    <div class="bg-white p-6 rounded-2xl border border-brand-border space-y-3 shadow-sm hover:border-brand-plum transition duration-300 flex flex-col justify-between col-span-1 md:col-span-2 lg:col-span-2">
+                        <div class="space-y-2.5">
+                            <span class="font-bold text-brand-terracotta uppercase text-[10px] flex items-center gap-1.5">
+                                <i class="fa-solid fa-landmark text-sm"></i> Représentation étudiante
+                            </span>
+                            <h4 class="font-bold text-brand-plum text-sm">Échanges avec les partenaires institutionnels</h4>
+                            <p class="text-slate-600 leading-relaxed">
+                                Participation aux réunions de concertation avec les interlocuteurs locaux (Université, Crous, Métropole) pour partager les retours d'expérience et besoins des étudiants.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-brand-border/40 text-[10px] text-slate-500 font-medium">
+                            <strong>Compétences :</strong> Prise de parole, écoute, transmission des demandes du terrain.
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bilan -->
+                <div class="bg-white p-5 md:p-6 rounded-2xl border border-brand-border text-xs text-slate-600 space-y-2 shadow-sm">
+                    <div class="flex items-center gap-2">
+                        <span class="px-3 py-1 bg-brand-plum text-white text-[10px] font-bold rounded-full uppercase shadow-sm">Bilan de l'engagement</span>
+                    </div>
+                    <p class="leading-relaxed text-slate-700">
+                        Cette expérience associative m'a permis de développer mes compétences relationnelles, le sens du travail d'équipe et de m'adapter à des situations variées sur le terrain.
+                    </p>
+                </div>
+
+            </article>
+        </section>
+
+        <section id="team-projects" class="py-6 max-w-6xl mx-auto px-6 space-y-6">
+            <div class="space-y-2">
+                <span class="text-[10px] font-bold text-brand-terracotta uppercase tracking-widest bg-brand-terracotta/10 px-3 py-1 rounded-full">Projets académiques</span>
+                <h2 class="font-title text-2xl md:text-3xl font-bold text-brand-plum mt-2">Travaux de groupe & Organisation</h2>
+                <p class="text-xs text-slate-500">Pratique du travail collaboratif lors de projets d'études.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                <div class="bg-brand-softcream p-6 rounded-3xl border border-brand-border shadow-sm space-y-3">
+                    <h3 class="font-bold text-base text-brand-plum">Travail en équipe pluri-disciplinaire</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Répartition des rôles selon les affinités (développement, design, rédaction) et suivi partagé pour la restitution des livrables.
+                    </p>
+                    <div class="pt-2 border-t border-brand-border/60 text-[10px] text-brand-terracotta font-semibold">
+                        Méthodes : Points réguliers, Trello, relectures croisées
+                    </div>
+                </div>
+
+                <div class="bg-brand-softcream p-6 rounded-3xl border border-brand-border shadow-sm space-y-3">
+                    <h3 class="font-bold text-base text-brand-plum">Suivi des étapes de projet</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Respect des plannings de rendu, préparation des présentations orales et cohérence globale du travail d'équipe.
+                    </p>
+                    <div class="pt-2 border-t border-brand-border/60 text-[10px] text-brand-terracotta font-semibold">
+                        Livrables : Cadrage, maquettes, soutenances orales
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-6 max-w-6xl mx-auto px-6 space-y-6 mb-12">
+            <div class="space-y-2">
+                <span class="text-[10px] font-bold text-brand-terracotta uppercase tracking-widest bg-brand-terracotta/10 px-3 py-1 rounded-full">Formation & Compétences</span>
+                <h2 class="font-title text-2xl md:text-3xl font-bold text-brand-plum mt-2">Parcours d'études & Outils</h2>
+                <p class="text-xs text-slate-500">Master Ingémédia, BUT MMI, Bac STI2D et écosystème d'outils digitaux.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div class="md:col-span-5 space-y-6">
+                    <div class="space-y-5 border-l-2 border-brand-terracotta pl-4 text-xs">
+                        <div>
+                            <span class="font-bold text-brand-plum text-sm">Master 1 & 2 Ingémédia (DEDI)</span>
+                            <p class="text-slate-500">2024 - 2026 · Université de Toulon</p>
+                            <p class="text-slate-600 mt-1">Design d'expérience, ergonomie des interfaces, recherche utilisateur et stratégie de contenu.</p>
+                        </div>
+                        <div>
+                            <span class="font-bold text-slate-800 text-sm">Bachelor BUT MMI</span>
+                            <p class="text-slate-500">Métiers du Multimédia et de l'Internet · IUT de Toulon</p>
+                            <p class="text-slate-600 mt-1">Design graphique, intégration web, réalisation vidéo et communication numérique.</p>
+                        </div>
+                        <div>
+                            <span class="font-bold text-slate-800 text-sm">Baccalauréat STI2D</span>
+                            <p class="text-slate-500">Sciences et Technologies du Développement Durable</p>
+                            <p class="text-slate-600 mt-1">Logique technique, méthode de projet et résolution de problèmes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 bg-brand-softcream p-6 md:p-8 rounded-3xl border border-brand-border shadow-sm space-y-6">
+                    <h3 class="font-title text-xl font-bold text-brand-plum">Outils & Méthodes</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3.5 bg-white rounded-2xl space-y-1 border-l-2 border-l-brand-terracotta border border-brand-border">
+                            <strong class="text-brand-terracotta uppercase text-[10px] block">UX / UI & Maquettage</strong>
+                            <p class="text-slate-700 font-medium">Figma (Prototypage, Composants, Wireframes), Sitemaps, User Flows</p>
+                        </div>
+                        <div class="p-3.5 bg-white rounded-2xl space-y-1 border-l-2 border-l-brand-plum border border-brand-border">
+                            <strong class="text-brand-terracotta uppercase text-[10px] block">Création Visuelle & Montage</strong>
+                            <p class="text-slate-700 font-medium">Photoshop, Illustrator, InDesign, Premiere Pro, CapCut, Lightroom</p>
+                        </div>
+                        <div class="p-3.5 bg-white rounded-2xl space-y-1 border-l-2 border-l-brand-plum border border-brand-border">
+                            <strong class="text-brand-terracotta uppercase text-[10px] block">Rédaction & Web</strong>
+                            <p class="text-slate-700 font-medium">Rédaction web SEO, UX Writing, WordPress, Mailchimp</p>
+                        </div>
+                        <div class="p-3.5 bg-white rounded-2xl space-y-1 border-l-2 border-l-brand-terracotta border border-brand-border">
+                            <strong class="text-brand-terracotta uppercase text-[10px] block">Gestion de projet & Pratique</strong>
+                            <p class="text-slate-700 font-medium">Statut Micro-Entreprise, organisation du travail, suivi de calendrier, travail en équipe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="bg-gradient-to-br from-brand-plum to-brand-darkplum text-white py-12 border-t border-brand-border relative overflow-hidden">
+        <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-brand-terracotta/20 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left relative z-10">
+            <div class="space-y-2">
+                <h3 class="font-title text-2xl font-bold">Hana Boudaouine</h3>
+                <p class="text-xs text-slate-300">Master 2 Ingémédia (DEDI) · Design d'expérience & Contenu</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 text-xs">
+                <a href="mailto:hana.boudaouine@gmail.com" class="px-5 py-3 bg-brand-terracotta font-bold text-white rounded-full hover:bg-brand-terracotta/90 transition shadow-lg hover:scale-105 transform">
+                    <i class="fa-solid fa-envelope mr-1"></i> Me contacter par mail
+                </a>
+                <a href="CV 2026_.pdf" target="_blank" class="px-5 py-3 border border-white/30 font-bold text-white rounded-full hover:bg-white/10 transition">
+                    <i class="fa-solid fa-file-pdf mr-1"></i> CV au format PDF
+                </a>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 mt-8 pt-6 border-t border-white/10 text-center text-[10px] text-slate-400 relative z-10">
+            © 2026 Hana Boudaouine · Portfolio Design d'Expérience & Contenu
+        </div>
+    </footer>
+
+    <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out" onclick="closeModal()">
+        <div class="relative max-w-5xl max-h-[90vh]">
+            <img id="modal-img" src="" alt="Zoom image" class="max-w-full max-h-[90vh] rounded-2xl shadow-2xl object-contain">
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = imageSrc;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        function toggleExpand(id) {
+            const card = document.getElementById(id);
+            const isExpanded = card.getAttribute('data-expanded') === 'true';
+            const btnSpan = card.querySelector('.toggle-btn span');
+            const btnIcon = card.querySelector('.toggle-btn i');
+
+            card.setAttribute('data-expanded', !isExpanded);
+
+            if (!isExpanded) {
+                btnSpan.textContent = 'Voir moins';
+                btnIcon.classList.add('rotate-180');
+            } else {
+                btnSpan.textContent = 'Voir plus';
+                btnIcon.classList.remove('rotate-180');
+            }
+        }
+
+        function filterGallery(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.classList.remove('bg-white', 'text-slate-600');
+                    btn.classList.add('bg-brand-plum', 'text-white');
+                } else {
+                    btn.classList.remove('bg-brand-plum', 'text-white');
+                    btn.classList.add('bg-white', 'text-slate-600');
+                }
+            });
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.remove('hidden-item');
+                } else {
+                    item.classList.add('hidden-item');
+                }
+            });
+        }
+
+        /* Script pour l'animation de la ligne orange volante */
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('option-a-container');
+            const indicator = document.getElementById('sliding-indicator');
+            const cards = document.querySelectorAll('.option-a-card');
+
+            if (!container || !indicator || cards.length === 0) return;
+
+            function moveIndicatorTo(card) {
+                const containerRect = container.getBoundingClientRect();
+                const cardRect = card.getBoundingClientRect();
+
+                const top = cardRect.top - containerRect.top;
+                const left = cardRect.left - containerRect.left;
+                const height = cardRect.height;
+
+                indicator.style.transform = `translate(${left}px, ${top}px)`;
+                indicator.style.height = `${height}px`;
+                indicator.style.opacity = '1';
+            }
+
+            // Positionnement par défaut sur le premier bloc
+            moveIndicatorTo(cards[0]);
+
+            // Animation au survol
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => moveIndicatorTo(card));
+            });
+
+            // Retour au premier bloc si la souris quitte la grille
+            container.addEventListener('mouseleave', () => moveIndicatorTo(cards[0]));
+
+            // Ajustement lors d'un redimensionnement
+            window.addEventListener('resize', () => moveIndicatorTo(cards[0]));
+        });
+    </script>
+</body>
+</html>
